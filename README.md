@@ -16,7 +16,7 @@ Caveats:
 * This tool will probably work best for areas within predefined Sentinel-1 footprints. I have not tested this tool with regions that overlap two separate scenes, and I am pretty confident it will fail. If you need this tool to perform this function, let me know and I'll see what I can do.
 * I want to do some validation and comparisons for these maps. Some options that come to mind are the [LIA maps available on AWS](https://registry.opendata.aws/sentinel-1-rtc-indigo/), though these LIA maps are only available over CONUS for January 2017 - April 2021. Also, ASF's HyP3 on-demand RTC processing has an [option to include the LIA raster in the final output](https://storymaps.arcgis.com/stories/2ead3222d2294d1fae1d11d3f98d7c35#ref-n-IVlZJ1). I have not done rigorous comparison with either of these yet.
 
-I took heavy inspiration from the following repos: 
+I took heavy inspiration from the following notebooks: 
 * https://github.com/bopen/sarsen/blob/main/notebooks/gamma_wrt_incidence_angle-S1-GRD-IW-RTC-South-of-Redmond.ipynb
 * https://github.com/microsoft/PlanetaryComputerExamples/blob/main/tutorials/rtc-qualitative-assessment.ipynb
 * https://planetarycomputer.microsoft.com/dataset/cop-dem-glo-30#Example-Notebook
