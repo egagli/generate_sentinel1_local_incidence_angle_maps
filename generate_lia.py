@@ -190,8 +190,8 @@ def create_lia_stack(unique_relative_orbits,output_folder_path):
     Returns:
     No returns, but creates lia netcdf in the output folder
     """
-    rel_orbit_var = xr.Variable('rel_orbit', unique_relative_orbits)
-    lia_stack = xr.concat([rxr.open_rasterio(f"{output_folder_path}/{orbit}.tif") for orbit in unique_relative_orbits],dim=rel_orbit_var).squeeze().sortby('rel_orbit')
+    rel_orbit_var = xr.Variable('sat:relative_orbit', unique_relative_orbits)
+    lia_stack = xr.concat([rxr.open_rasterio(f"{output_folder_path}/{orbit}.tif") for orbit in unique_relative_orbits],dim=rel_orbit_var).squeeze().sortby('sat:relative_orbit')
     save_path = f'{output_folder_path}/lia_stack_orbits_{"_".join(unique_relative_orbits.astype(str))}.nc'
     lia_stack.to_netcdf(save_path)
     print(f'Raster stack is complete and saved at {save_path}')
