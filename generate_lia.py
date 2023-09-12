@@ -145,7 +145,7 @@ def search_for_representative_scenes(aoi_gdf):
 
     items = search.item_collection()
     print(f"Returned {len(items)} Items")
-    ds = stackstac.stack(items)
+    ds = stackstac.stack(items,epsg=aoi_gdf.estimate_utm_crs().to_epsg())
     
     unique_relative_orbits = np.unique(ds['sat:relative_orbit'])
     id_list = []
