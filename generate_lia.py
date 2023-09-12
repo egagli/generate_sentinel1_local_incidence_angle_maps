@@ -21,7 +21,7 @@ import geopandas as gpd
 import rioxarray as rxr
 import sarsen
 
-def create_cop30_dem(aoi_gdf,dem_folder_path):
+def create_cop30_dem(aoi_gdf,dem_folder_path,res=10):
     """
     Given a geodataframe and a path to a dem folder, create a 10m DEM in UTM derived from COP30 DEM. Adapted 
     from https://planetarycomputer.microsoft.com/dataset/cop-dem-glo-30#Example-Notebook. 
@@ -53,7 +53,7 @@ def create_cop30_dem(aoi_gdf,dem_folder_path):
     t_srs = dem_raster.rio.estimate_utm_crs()
     t_srs = str(t_srs)
     
-    os.system(f'gdalwarp -r bilinear -s_srs EPSG:4326+5773 -t_srs {t_srs} -tr 10 10 -overwrite -ot Float32 -co COMPRESS=DEFLATE -dstnodata -3.4028234663852886e+38 {dem_urlpath} {dem_10m_UTM_urlpath}')
+    os.system(f'gdalwarp -r bilinear -s_srs EPSG:4326+5773 -t_srs {t_srs} -tr {res} {res} -overwrite -ot Float32 -co COMPRESS=DEFLATE -dstnodata -3.4028234663852886e+38 {dem_urlpath} {dem_10m_UTM_urlpath}')
     os.system(f'rm {dem_urlpath}')
     dem_raster_10m_UTM = rxr.open_rasterio(dem_10m_UTM_urlpath,mask_and_scale=True)
     dem_raster_10m_UTM.rio.to_raster(dem_10m_UTM_urlpath)
@@ -196,7 +196,7 @@ def create_lia_stack(unique_relative_orbits,output_folder_path):
     lia_stack.to_netcdf(save_path)
     print(f'Raster stack is complete and saved at {save_path}')
     
-def geojson_to_lia_rasters_and_lia_stack(aoi_geojson):
+def geojson_to_lia_rasters_and_lia_stack(aoi_geojson,res=10):
     """
     Given a geojson, create lia maps saved as tifs and a lia raster stack saved as a netcdf. 
     Args:
@@ -212,7 +212,7 @@ def geojson_to_lia_rasters_and_lia_stack(aoi_geojson):
     os.makedirs(dem_folder_path, exist_ok=True)
     os.makedirs(output_folder_path, exist_ok=True)
     
-    create_cop30_dem(aoi_gdf,dem_folder_path)
+    create_cop30_dem(aoi_gdf,dem_folder_path,res=res)
     
     unique_relative_orbits,id_list = search_for_representative_scenes(aoi_gdf)
     
