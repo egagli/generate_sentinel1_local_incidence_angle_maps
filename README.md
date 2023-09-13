@@ -3,7 +3,7 @@
 
 **Updated September 11, 2023**
 
-Sentinel-1 local incidence angle (LIA) maps are very useful but often confusing and timely to fetch. This utility uses [sarsen](https://github.com/bopen/sarsen) under the hood to quickly(ish) create LIA rasters from [GRD files](https://planetarycomputer.microsoft.com/dataset/sentinel-1-grd) and a [Copernicus 30 meter DEM](https://planetarycomputer.microsoft.com/dataset/cop-dem-glo-30) both temporarily downloaded from Microsoft Planetary Computer. Please please (please) check out the caveats section below before use. Using this utility is as easy as 1,2,3!
+Sentinel-1 local incidence angle (LIA) maps are very useful but often confusing and inconvenient to fetch. This utility uses [sarsen](https://github.com/bopen/sarsen) under the hood to quickly(ish) create LIA rasters from [GRD files](https://planetarycomputer.microsoft.com/dataset/sentinel-1-grd) and a [Copernicus 30 meter DEM](https://planetarycomputer.microsoft.com/dataset/cop-dem-glo-30) both temporarily downloaded from Microsoft Planetary Computer. Please please (please) check out the caveats section below before use. Using this utility is as easy as 1,2,3!
 
 
 
