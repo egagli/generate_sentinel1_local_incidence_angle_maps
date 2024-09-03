@@ -37,12 +37,11 @@ def create_cop30_dem(aoi_gdf,dem_folder_path,res=10):
     dem_urlpath = f"{dem_folder_path}/dem.tif"
     dem_10m_UTM_urlpath = dem_urlpath.strip(".tif") + "_UTM.tif"
     
-    catalog = pystac_client.Client.open(
-    "https://planetarycomputer.microsoft.com/api/stac/v1")
+    catalog = pystac_client.Client.open("https://planetarycomputer.microsoft.com/api/stac/v1", modifier=planetary_computer.sign_inplace,)
 
     search = catalog.search(collections="cop-dem-glo-30", bbox=aoi_gdf.total_bounds)
-    items = list(search.get_items())
-    dem_raster_all = stackstac.stack(items, bounds=aoi_gdf.total_bounds).squeeze()
+    items = list(search.items())
+    dem_raster_all = stackstac.stack(items, bounds=tuple(aoi_gdf.total_bounds)).squeeze()
     
     dem_raster = dem_raster_all.compute()
     if "time" in dem_raster.dims:
