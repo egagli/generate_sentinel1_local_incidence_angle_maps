@@ -1,0 +1,33 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: generate_sentinel1_local_incidence_angle_maps
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Eric
+    family-names: Gagliano
+    email: egagli@uw.edu
+    affiliation: University of Washington
+    orcid: 'https://orcid.org/0000-0002-4362-6260'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.17246156
+repository-code: >-
+  https://github.com/egagli/generate_sentinel1_local_incidence_angle_maps
+abstract: >-
+  Tool to quickly generate Sentinel-1 local incidence angle
+  maps.
+keywords:
+  - sentinel-1
+  - local incidence angle
+  - LIA
+  - synthetic aperture radar
+  - sar
+  - microsoft planetary computer
+license: MIT
+version: v1.0
+date-released: '2023-09-11'
